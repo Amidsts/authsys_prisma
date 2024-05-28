@@ -1,0 +1,62 @@
+@server= http://127.0.0.1:1290
+
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWYiOiIwYjMwNzhhZi0wMTk3LTQzMjctYjIyMC03ODRjMjA2ZGFjYTQiLCJpYXQiOjE3MTY4NzQwNjYsImV4cCI6MTcyMDQ3NDA2NiwiYXVkIjoid2ViLXVzZXIiLCJpc3MiOiJzcGVlZHljYXJkTGlzdGVyIn0._99Sxua968jzDEd1IjAfDOHmLkcEwgY5_qn0GEEod4s
+
+#### server
+GET {{server}}
+
+### sign up
+POST {{server}}/auth/signup
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "doeo@email.com",
+    "password": "12neibaoi"
+}
+
+### sign in
+POST {{server}}/auth/signin
+Content-Type: application/json
+
+{
+    "email": "doeo@email.com",
+    "password": "12neibaoi"
+}
+
+### create product
+POST {{server}}/products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "abcdf",
+    "description": "dfsgh",
+    "price": 500,
+    "quantityInStock": 20,
+    "sku": "9h3s$jb"
+}
+
+### ===products=====
+### get product
+GET {{server}}/products?productId=c4de5a11-f83f-446d-8904-769eabc54896
+Authorization: Bearer {{token}}
+
+### update product
+PUT {{server}}/products
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "productId": "c4de5a11-f83f-446d-8904-769eabc54896",
+    "name": "amggtyf",
+    "description": "dxervh",
+    "price": 700,
+    "quantityInStock": 10,
+    "sku": "9h3s$jb"
+}
+
+### delete product
+DELETE {{server}}/products/c4de5a11-f83f-446d-8904-769eabc54896
+Authorization: Bearer {{token}}
